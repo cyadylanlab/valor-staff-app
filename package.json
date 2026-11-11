@@ -1,0 +1,25 @@
+{
+  "name": "valor-staff-app",
+  "version": "1.0.0",
+  "description": "Virginia Valor FC staff app. Native shell around the club's coach tools.",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "sync": "cap sync",
+    "icons": "capacitor-assets generate --iconBackgroundColor '#F2EEE6' --iconBackgroundColorDark '#F2EEE6' --splashBackgroundColor '#F2EEE6' --splashBackgroundColorDark '#0B0B0C'",
+    "open:ios": "cap open ios",
+    "open:android": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/browser": "^8.0.5",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/ios": "^8.6.0",
+    "@capacitor/status-bar": "^8.0.4"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^4.0.0"
+  }
+}

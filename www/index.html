@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2EEE6">
+<title>Valor Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F2EEE6;
+    --ink:#0B0B0C;
+    --gold:#8B7648;
+    --brass:#B9A06A;
+    --line:#E2DFD8;
+    --muted:#5C5A55;
+    --display:"Saira Condensed","Arial Narrow",sans-serif;
+    --body:"Karla","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--body);
+    min-height:100vh;
+    overflow-x:hidden;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Oversized crest, cropped off the lower right. The one element that breaks the grid. */
+  .wallmark{
+    position:fixed;
+    right:-28vw;
+    bottom:-16vh;
+    width:92vw;
+    max-width:640px;
+    opacity:.055;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wallmark img{width:100%;height:auto;display:block}
+
+  .sheet{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:20px 16px 40px}
+
+  /* Masthead */
+  .masthead{display:flex;align-items:center;gap:13px;padding-bottom:16px}
+  .masthead img{width:46px;height:auto;display:block;flex:none}
+  .masthead .wordmark{line-height:1}
+  .masthead h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    margin:0;
+    line-height:.92;
+  }
+  .masthead p{
+    font-size:11.5px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:5px 0 0;
+    font-weight:500;
+  }
+
+  /* The rail the tags hang from */
+  .rail{position:relative;height:4px;background:var(--ink);margin:0 2px 0}
+  .rail::before,.rail::after{
+    content:"";position:absolute;top:-3px;width:10px;height:10px;border-radius:50%;
+    background:var(--brass);border:2px solid var(--ink);
+  }
+  .rail::before{left:-2px}
+  .rail::after{right:-2px}
+
+  /* Pegs */
+  .pegs{display:grid;grid-template-columns:1fr;gap:0 20px}
+  @media(min-width:540px){ .pegs{grid-template-columns:1fr 1fr} }
+
+  .peg{display:block;text-decoration:none;color:inherit;position:relative;padding-bottom:14px}
+  /* Uneven string lengths give the wall its irregular rhythm */
+  .peg:nth-child(1) .string{height:17px}
+  .peg:nth-child(2) .string{height:33px}
+  .peg:nth-child(3) .string{height:24px}
+  .peg:nth-child(4) .string{height:14px}
+  .peg:nth-child(5) .string{height:37px}
+  .peg:nth-child(6) .string{height:22px}
+
+  .string{display:block;width:1px;background:var(--ink);margin:0 auto;opacity:.45}
+
+  .tag{
+    position:relative;
+    background:var(--ink);
+    color:var(--cream);
+    padding:32px 15px 14px;
+    transition:transform .14s ease;
+    isolation:isolate;
+  }
+  .peg:nth-child(odd) .tag{transform:rotate(-.55deg)}
+  .peg:nth-child(even) .tag{transform:rotate(.45deg)}
+  .peg:active .tag{transform:rotate(0deg) scale(.985)}
+
+  /* Punched hole the string feeds into */
+  .tag::before{
+    content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);
+    width:12px;height:12px;border-radius:50%;
+    background:var(--cream);
+    box-shadow:inset 0 0 0 1px rgba(11,11,12,.25);
+  }
+
+  .tag h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:23px;
+    line-height:1.0;
+    letter-spacing:.035em;
+    text-transform:uppercase;
+    margin:0;
+  }
+  .tag .cut{height:2px;background:var(--gold);width:36px;margin:9px 0 8px}
+  .tag p{margin:0;font-size:13px;line-height:1.4;color:#C9C5BC}
+  .tag .go{
+    display:block;margin-top:10px;
+    font-family:var(--display);font-weight:500;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);
+  }
+
+  footer{
+    margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12px;line-height:1.55;color:var(--muted);
+  }
+  footer a{color:var(--gold);text-decoration:none;font-weight:600}
+
+  @media(prefers-reduced-motion:reduce){ .tag{transition:none} }
+</style>
+</head>
+<body>
+
+<div class="wallmark"><img src="crest.png" alt=""></div>
+
+<main class="sheet">
+
+  <header class="masthead">
+    <img src="crest.png" alt="Virginia Valor FC">
+    <div class="wordmark">
+      <h1>Valor Staff</h1>
+      <p>Club Tools</p>
+    </div>
+  </header>
+
+  <div class="rail"></div>
+
+  <nav class="pegs" id="pegs"></nav>
+
+  <footer>
+    Trouble with a tool, or something missing from this wall? Contact
+    <a href="mailto:dsutherland@virginiavalorfc.org">Dylan Sutherland</a>.
+  </footer>
+
+</main>
+
+<script>
+/* ---------------------------------------------------------------
+   TOOL LIST
+   Edit this block to add, remove or re-point a tool.
+   Order here is the order on the wall.
+   --------------------------------------------------------------- */
+var TOOLS = [
+  { name:"Tournament Selections",
+    blurb:"Submit and review tournament choices for your teams.",
+    url:"https://cyadylanlab.github.io/tournament-list/" },
+
+  { name:"Travel Reimbursement",
+    blurb:"File a reimbursement request and track what you have submitted.",
+    url:"https://cyadylanlab.github.io/valorwebsite/valor-travel-reimbursement.html" },
+
+  { name:"Valor Best XI",
+    blurb:"Nominate players for the weekly team of the week.",
+    url:"https://cyadylanlab.github.io/valorwebsite/best-xi.html" },
+
+  { name:"Character Awards",
+    blurb:"Put a player forward for a Valor Character Award.",
+    url:"https://cyadylanlab.github.io/valorwebsite/valor-character-awards.html" },
+
+  { name:"Hudl Cameras",
+    blurb:"See which cameras are free and check one out.",
+    url:"https://cyadylanlab.github.io/valorwebsite/hudl-cameras.html" },
+
+  { name:"Meeting Check-In",
+    blurb:"Check in to a staff meeting or education night.",
+    url:"https://cyadylanlab.github.io/valorwebsite/valor-coach-checkin_1.html" }
+];
+/* --------------------------------------------------------------- */
+
+(function(){
+  var wall = document.getElementById('pegs');
+
+  TOOLS.forEach(function(t){
+    var a = document.createElement('a');
+    a.className = 'peg';
+    a.href = t.url;
+    a.setAttribute('aria-label', t.name);
+
+    var s = document.createElement('span');
+    s.className = 'string';
+
+    var tag = document.createElement('div');
+    tag.className = 'tag';
+
+    var h = document.createElement('h2'); h.textContent = t.name;
+    var c = document.createElement('div'); c.className = 'cut';
+    var p = document.createElement('p'); p.textContent = t.blurb;
+    var g = document.createElement('span'); g.className = 'go'; g.textContent = 'Open';
+
+    tag.appendChild(h); tag.appendChild(c); tag.appendChild(p); tag.appendChild(g);
+    a.appendChild(s); a.appendChild(tag);
+
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      openTool(t.url);
+    });
+
+    wall.appendChild(a);
+  });
+
+  function openTool(url){
+    var cap = window.Capacitor;
+    if (cap && cap.Plugins && cap.Plugins.Browser) {
+      cap.Plugins.Browser.open({
+        url: url,
+        presentationStyle: 'fullscreen',
+        toolbarColor: '#0B0B0C'
+      });
+    } else {
+      window.open(url, '_blank', 'noopener');
+    }
+  }
+})();
+</script>
+</body>
+</html>
